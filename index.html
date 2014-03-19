@@ -74,24 +74,37 @@
             });
 
 map = new OpenLayers.Map({
-         div: 'map'
-        ,projection: "EPSG:4326"
-        ,numZoomLevels:10
-        ,panMethod: null
-        ,center:new OpenLayers.LonLat(120.29,31.59)
+         div: 'map',
+         projection: "EPSG:4326",
+         numZoomLevels:10,
+         panMethod: null,
+         center:new OpenLayers.LonLat(120.29,31.59)
     });    
 
-    var street_1 = new OpenLayers.Layer.WMTS({
-        name: "天地图-街道",
-        url: "http://t6.tianditu.cn/vec_c/wmts",
+    var baseMap1 = new OpenLayers.Layer.WMTS({
+        name: "经纬度-底图",
+        url: "http://t0.tianditu.com/vec_c/wmts",
         format: "tiles",
         layer: "vec",
         style: "default",
         matrixSet: "c",
         opacity: 0.7,                        
         isBaseLayer: true,
-    });  
- map.addLayers([street_1]);
+    });
+     var label1 = new OpenLayers.Layer.WMTS({
+        name: "经纬度-标注",
+        //url: "http://t6.tianditu.cn/vec_c/wmts",
+	url: "http://t0.tianditu.com/cva_c/wmts",
+	//url: "http://t0.tianditu.com/cva_w/wmts",
+        format: "tiles",
+	transparent: "true",
+        layer: "cva",
+        style: "default",
+        matrixSet: "c",
+        opacity: 0.7,                        
+        isBaseLayer: false,
+    });   
+ map.addLayers([baseMap1, label1]);
                 
                 var click = new OpenLayers.Control.Click();
                 map.addControl(click);
