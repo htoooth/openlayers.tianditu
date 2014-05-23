@@ -30,11 +30,11 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 });
 
 map = new OpenLayers.Map({
-     div: 'map'
-    ,projection: "EPSG:4326"
-    ,numZoomLevels:10
-    ,panMethod: null
-    ,center:new OpenLayers.LonLat(120.29,31.59)
+    div: 'map',
+    projection: "EPSG:4326",
+    numZoomLevels:10 ,
+    panMethod: null ,
+    center:new OpenLayers.LonLat(120.29,31.59)
 });
 
 var normal = new OpenLayers.Layer.WMTS({
