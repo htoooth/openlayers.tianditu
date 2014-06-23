@@ -7,6 +7,12 @@
     <title>OpenLayers Demo</title>
         <script src="http://www.openlayers.cn/olapi/OpenLayers.js"></script>
         <link rel="stylesheet" href="http://www.openlayers.cn/olapi/theme/default/style.css" type="text/css">
+        <style type="text/css">
+        .olImageLoadError { 
+            /* when OL encounters a 404, don't display the pink image */
+            display: none !important;
+        }
+        </style>
     </head>
     <body >
         <h1 id="title">天地图</h1>

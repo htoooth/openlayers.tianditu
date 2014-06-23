@@ -1,3 +1,5 @@
+OpenLayers.IMAGE_RELOAD_ATTEMPTS = 3;
+OpenLayers.Util.onImageLoadErrorColor = "transparent";
 OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
     defaultHandlerOptions: {
         'single': true,
@@ -32,7 +34,7 @@ OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
 map = new OpenLayers.Map({
     div: 'map',
     projection: "EPSG:4326",
-    numZoomLevels:10 ,
+    numZoomLevels: 10 ,
     panMethod: null ,
     center:new OpenLayers.LonLat(120.29,31.59)
 });
@@ -50,13 +52,14 @@ var normal = new OpenLayers.Layer.WMTS({
 
 var normal_annotation = new OpenLayers.Layer.WMTS({
     name: "天地图-普通注记",
-    url: "http://t0.tianditu.com/cva_c/wmts",
+    url: "http://t1.tianditu.com/cva_c/wmts",
     format: "tiles",
     layer: "cva",
     style: "default",
+    transparent: true,
     matrixSet: "c",
     opacity: 0.7,
-    isBaseLayer: true,
+    isBaseLayer: false,
 });
 
 var satellite = new OpenLayers.Layer.WMTS({
@@ -78,7 +81,7 @@ var satellite_annotation = new OpenLayers.Layer.WMTS({
     style: "default",
     matrixSet: "c",
     opacity: 0.7,
-    isBaseLayer: true,
+    isBaseLayer: false,
 });
 
 var terrain = new OpenLayers.Layer.WMTS({
@@ -100,7 +103,7 @@ var terrain_annotation = new OpenLayers.Layer.WMTS({
     style: "default",
     matrixSet: "c",
     opacity: 0.7,
-    isBaseLayer: true,
+    isBaseLayer: false,
 });
 
 map.addControl(new OpenLayers.Control.Navigation());
