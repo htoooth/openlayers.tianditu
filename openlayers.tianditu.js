@@ -45,7 +45,6 @@ var normal = new OpenLayers.Layer.WMTS({
     layer: "vec",
     style: "default",
     matrixSet: "c",
-    opacity: 0.7,
     isBaseLayer: true,
 });
 
@@ -57,7 +56,6 @@ var normal_annotation = new OpenLayers.Layer.WMTS({
     style: "default",
     transparent: true,
     matrixSet: "c",
-    opacity: 0.7,
     isBaseLayer: false,
 });
 
@@ -68,7 +66,6 @@ var satellite = new OpenLayers.Layer.WMTS({
     layer: "img",
     style: "default",
     matrixSet: "c",
-    opacity: 0.7,
     isBaseLayer: true,
 });
 
@@ -79,7 +76,6 @@ var satellite_annotation = new OpenLayers.Layer.WMTS({
     layer: "cia",
     style: "default",
     matrixSet: "c",
-    opacity: 0.7,
     isBaseLayer: false,
 });
 
@@ -90,7 +86,6 @@ var terrain = new OpenLayers.Layer.WMTS({
     layer: "ter",
     style: "default",
     matrixSet: "c",
-    opacity: 0.7,
     isBaseLayer: true,
 });
 
@@ -101,13 +96,15 @@ var terrain_annotation = new OpenLayers.Layer.WMTS({
     layer: "cta",
     style: "default",
     matrixSet: "c",
-    opacity: 0.7,
     isBaseLayer: false,
 });
 
 map.addControl(new OpenLayers.Control.Navigation());
-map.addControl(new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')}));
+// map.addControl(new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')}));
+map.addControl(new OpenLayers.Control.LayerSwitcher());
 map.addLayers([normal,normal_annotation,satellite,satellite_annotation,terrain,terrain_annotation]);
 var click = new OpenLayers.Control.Click();
 map.addControl(click);
+map.zoomToMaxExtent();
+
 click.activate();
